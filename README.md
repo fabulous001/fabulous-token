@@ -1,66 +1,99 @@
-## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# Fabulous Token (FAB)
 
-Foundry consists of:
+A customized ERC-20 token built with Solidity and OpenZeppelin, using Foundry for development, testing, and deployment.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Token Information
 
-## Documentation
+- **Token Name:** Fabulous Token
+- **Token Symbol:** FAB
+- **Initial Supply:** 1,000,000 FAB
+- **Decimals:** 18
+- **Network:** Ethereum Sepolia Testnet
+- **Contract Address:** `0x8128C8C17220CC3237013a60887C52ef7235C21e`
 
-https://book.getfoundry.sh/
+### View the Deployed Contract
 
-## Usage
+[View Fabulous Token on Sepolia Etherscan](https://sepolia.etherscan.io/address/0x8128C8C17220CC3237013a60887C52ef7235C21e)
 
-### Build
+[View Deployment Transaction](https://sepolia.etherscan.io/tx/0x4fc8a75bdb1d8e4d87b2e629a6419fc3b561f5fd248000d75ea2b68b55a716e4)
 
-```shell
-$ forge build
+## Features
+
+- ERC-20 standard token functionality
+- Initial supply minted to the deployer's wallet
+- Owner-only token minting
+- Token burning
+- Owner-controlled pause and unpause functionality
+- Tests for transfers, minting, burning, and pausing
+
+## Technologies Used
+
+- Solidity
+- Foundry (Forge, Cast, and Anvil)
+- OpenZeppelin Contracts
+- Ethereum Sepolia Testnet
+
+## Prerequisites
+
+Install Foundry and Git before setting up the project.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/fabulous001/fabulous-token.git
+cd fabulous-token
 ```
 
-### Test
+Install the dependencies:
 
-```shell
-$ forge test
+```bash
+forge install foundry-rs/forge-std --no-git
+forge install OpenZeppelin/openzeppelin-contracts --no-git
 ```
 
-### Format
+Build the project:
 
-```shell
-$ forge fmt
+```bash
+forge build
 ```
 
-### Gas Snapshots
+## Running Tests
 
-```shell
-$ forge snapshot
+Run all tests:
+
+```bash
+forge test -vv
 ```
 
-### Anvil
+The project has passed 9 tests, with 0 failures and 0 skipped tests in the recorded test run.
 
-```shell
-$ anvil
+The FabulousToken test suite covers initial supply, owner-only minting, burning, transfers, and pause/unpause functionality.
+
+## Deployment
+
+To deploy your own instance to Sepolia, configure your Sepolia RPC URL and private key locally in a `.env` file. Never commit your `.env` file or share your private key.
+
+Load the environment variables:
+
+```bash
+source .env
 ```
 
-### Deploy
+Deploy using Foundry:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```bash
+forge script script/DeployFabulousToken.s.sol:DeployFabulousToken --rpc-url "$SEPOLIA_RPC_URL" --broadcast --private-key "$PRIVATE_KEY"
 ```
 
-### Cast
+Ensure your wallet has enough Sepolia test ETH for gas and that your RPC URL is valid before deploying.
 
-```shell
-$ cast <subcommand>
-```
+**Note:** The contract address above is the address of the instance already deployed for this project. Deploying again will create a different contract address.
 
-### Help
+## Security Notes
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Never publish your wallet's private key or recovery phrase.
+- Keep `.env` out of Git.
+- This project is deployed on a test network and its tokens have no guaranteed monetary value.
