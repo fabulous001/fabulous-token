@@ -1,0 +1,18 @@
+# Docs
+docs/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Foundry dependencies
+lib/
+
+# Build outputs and generated files
+out/
+cache/
+broadcast/
+
+# Operating system files
+.DS_Store
